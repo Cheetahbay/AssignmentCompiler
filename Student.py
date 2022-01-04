@@ -1,8 +1,6 @@
 from os import path, listdir
 import tkinter as tk
 
-# from fpdf import FPDF
-
 
 PIC_FORMATS = ("jpg", "jpeg", "png", "gif")
 test_img = path.abspath("C://Users/Chi/Desktop/test_img")
