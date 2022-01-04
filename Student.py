@@ -7,13 +7,15 @@ test_img = path.abspath("C://Users/Chi/Desktop/test_img")
 
 
 class Student:
-    def __init__(self, name, old_list, _dir):
+    def __init__(self, name, old_list, _dir: str):
+        _dir = _dir.split("Folder: ")[1]
         updated_list = listdir(_dir)
         self.name = name
         self.submissions = [sub for sub in updated_list if sub not in old_list and sub.endswith(PIC_FORMATS)]
 
     @staticmethod
     def get_submission(_dir):
+        _dir = _dir.split("Folder: ")[1]
         return listdir(_dir)
 
     def __str__(self):
