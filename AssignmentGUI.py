@@ -16,42 +16,6 @@ DL_HELP = "Download submissions for student.\nClick 'Create when finished"
 LIST_HELP = "Click 'Get List' to start on another student"
 
 
-#  Setup Window. Requires assignment name, and folder to get submissions from
-class SetupWin(tk.Tk):
-    def __init__(self):
-        tk.Tk.__init__(self)
-        # self.configure(bg=MAIN_COLOR)
-        self.geometry("350x200+910+400")
-        self.resizable(0, 0)
-        self.assignment_lbl = tk.Label(self, text="Assignment: ", font=("Arial", 18))
-        self.assignment = tk.Entry(self, width=18, font=("Arial", 18))
-        self.assignment_lbl.pack()
-        self.assignment.pack()
-
-        self.folder_btn = tk.Button(self, text="Select Folder", font=("Arial", 18), command=self.file)
-        self.folder_btn.pack(pady=5)
-        self.folder_lbl = tk.Label(self, text="Downloads Folder:", font=("Arial", 18))
-        self.folder_lbl.pack()
-
-        self.cont_btn = tk.Button(self, text="Continue", font=("Arial", 18),
-                                  command=lambda: self.cont(self.folder_lbl.cget("text"), self.assignment.get()))
-        self.cont_btn.pack()
-        self.mainloop()
-
-    def cont(self, _dir, ass_name):
-        if not ass_name or not _dir:
-            MainPage.create_warning("Select folder and enter assignment name")
-        else:
-            self.destroy()
-            MainPage(_dir, ass_name)
-
-    def file(self):
-        self.folder = tk.filedialog.askdirectory()
-        self.folder_lbl.configure(text=self.folder)
-
-        self.mainloop()
-
-
 class MainPage(tk.Tk):
     def __init__(self, _dir: str, ass_name):
         tk.Tk.__init__(self)  # initialization of tkinter
@@ -233,5 +197,5 @@ class MainPage(tk.Tk):
         ok_btn.pack()
 
 
-intro = SetupWin()
+# intro = SetupWin()
 # mw = MainPage("C:/Users/Chi/Desktop/test_img", "test")
