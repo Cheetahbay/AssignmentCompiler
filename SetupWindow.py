@@ -1,8 +1,9 @@
 import tkinter as tk
 import tkinter.filedialog as filedialog
-from AssignmentGUI import MainPage
+from MainWindow import MainWindow
+import logging
 
-
+logging.basicConfig(level=logging.INFO)
 SETUP_STYLE = ("Arial", 16)
 
 class SetupWindow(tk.Tk):
@@ -25,7 +26,7 @@ class SetupWindow(tk.Tk):
         self.greeting.pack()
 
         # Assignment label
-        self.assignment_name_label = tk.Label(self, text="Assignment Name:")
+        self.assignment_name_label = tk.Label(self, text="Assignment Name:", font=SETUP_STYLE)
         self.assignment_name_label.pack()
 
         # Assignment label entry box
@@ -52,12 +53,17 @@ class SetupWindow(tk.Tk):
         self.folder_lbl.configure(text=f"Folder: {self.folder}")
 
     def setup_continue(self, dir, assignment_name):
-        """Conitinues to main page if assingment name and downloads folder is specified"""
+        """Continues to main page if assignment name and downloads folder is specified"""
         if not assignment_name or dir == "Path to downloads folder:":
-            MainPage.create_warning("Please make sure folder and assignment name are specified")
-        else: 
+            # Prompt user to enter assignment name/specify downloads folder
+            tk.messagebox.showerror(title="Error", message="Enter assignment name and choose downloads folder before continuing.")
+        else:
+            # Destroy setup window and move onto next step with assignment name and downloads folder
+            logging.log(logging.WARN, f"Download directory set to {dir.split(' ')[1]}")
+            path = self.folder
+            ass_name = self.assignment_name.get()
             self.destroy()
-            MainPage(dir, assignment_name)
+            MainWindow(path, ass_name)
+            
 
 
-setup = SetupWindow()

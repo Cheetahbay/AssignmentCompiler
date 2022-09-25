@@ -17,7 +17,7 @@ LIST_HELP = "Click 'Get List' to start on another student"
 
 
 class MainPage(tk.Tk):
-    def __init__(self, _dir: str, ass_name):
+    def __init__(self, _dir: str, ass_name: str):
         tk.Tk.__init__(self)  # initialization of tkinter
         self.geometry("650x700+910+400")
         self.title("PDF Creator")
