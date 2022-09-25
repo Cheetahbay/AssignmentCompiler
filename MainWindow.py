@@ -1,6 +1,4 @@
 import tkinter as tk
-import sys
-import time 
 import logging
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
@@ -21,7 +19,7 @@ class MainWindow(tk.Tk):
         self.dir = dir
         self.assignment_name = assignment_name
         
-        # Setup watchdog observer for directory specified in setup window
+        # Setup watchdog observer to monitor changes in the directory specified in setup window
         event_handler = LoggingEventHandler()
         observer = Observer()
         observer.schedule(event_handler, self.dir, recursive=True)
