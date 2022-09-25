@@ -1,8 +1,9 @@
 import tkinter as tk
 import tkinter.filedialog as filedialog
 from MainWindow import MainWindow
+import logging
 
-
+logging.basicConfig(level=logging.INFO)
 SETUP_STYLE = ("Arial", 16)
 
 class SetupWindow(tk.Tk):
@@ -58,6 +59,7 @@ class SetupWindow(tk.Tk):
             tk.messagebox.showerror(title="Error", message="Enter assignment name and choose downloads folder before continuing.")
         else:
             # Destroy setup window and move onto next step with assignment name and downloads folder
+            logging.log(logging.WARN, f"Download directory set to {dir.split(' ')[1]}")
             path = self.folder
             ass_name = self.assignment_name.get()
             self.destroy()

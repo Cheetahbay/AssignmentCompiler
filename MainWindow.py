@@ -3,13 +3,17 @@ import logging
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 
-logging.basicConfig(level=logging.INFO,
+logging.basicConfig(level=logging.WARNING,
                         format='%(asctime)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
 
 
 
 class MainWindow(tk.Tk):
+
+    '''Main Window GUI. Students and their 
+    associated assignment submissions are aggregated'''
+
     def __init__(self, dir: str, assignment_name: str):
         tk.Tk.__init__(self)
 
@@ -40,6 +44,6 @@ class MainWindow(tk.Tk):
 
         self.mainloop()
 
-# MainWindow("C:/Users/Chi/Desktop/test_img", "test assignment 1")
+MainWindow("C:/Users/Chi/Desktop/test_img", "test assignment 1")
 
     
